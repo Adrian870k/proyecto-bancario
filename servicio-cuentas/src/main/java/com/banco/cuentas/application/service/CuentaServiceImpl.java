@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Servicio para gestionar las cuentas.
+ */
 @Service
 public class CuentaServiceImpl implements CuentaService {
     private final CuentaRepository cuentaRepository;

@@ -5,6 +5,9 @@ import com.banco.clientes.application.dto.CreateClienteDTO;
 import com.banco.clientes.domain.model.Cliente;
 import org.springframework.stereotype.Component;
 
+/**
+ * Mapper para convertir entidades Cliente a DTO y viceversa.
+ */
 @Component
 public class ClienteMapper {
     public Cliente toEntity(CreateClienteDTO dto) {

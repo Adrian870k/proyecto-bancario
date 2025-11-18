@@ -4,6 +4,9 @@ import com.banco.cuentas.application.dto.MovimientoDTO;
 import com.banco.cuentas.domain.model.Movimiento;
 import org.springframework.stereotype.Component;
 
+/**
+ * Mapper para convertir entidades Movimiento a DTO y viceversa.
+ */
 @Component
 public class MovimientoMapper {
     public MovimientoDTO toDTO(Movimiento entity) {

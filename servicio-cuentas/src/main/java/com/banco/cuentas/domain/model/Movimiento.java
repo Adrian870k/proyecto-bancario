@@ -23,7 +23,7 @@ public class Movimiento {
     private String tipoMovimiento; // "tipo movimiento" (DEBITO/CREDITO)
 
     @Column(nullable = false, precision = 19, scale = 2)
-    private BigDecimal valor; // "valor" (positivo o negativo) [cite: 5, 9]
+    private BigDecimal valor; // "valor" (positivo o negativo)
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal saldo; // "saldo" (saldo *después* del movimiento)

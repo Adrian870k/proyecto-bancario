@@ -16,6 +16,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Servicio para manejar los movimientos.
+ */
 @Service
 public class MovimientoServiceImpl implements MovimientoService {
     private final MovimientoRepository movimientoRepository;

@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Servicio para manejar los clientes .
+ */
 @Service
 public class ClienteServiceImpl implements ClienteService {
     private final ClienteRepository clienteRepository;

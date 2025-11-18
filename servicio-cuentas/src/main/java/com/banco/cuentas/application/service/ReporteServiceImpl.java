@@ -16,6 +16,9 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Servicio para manejar el reporte.
+ */
 @Service
 public class ReporteServiceImpl implements ReporteService{
     private final CuentaRepository cuentaRepository;

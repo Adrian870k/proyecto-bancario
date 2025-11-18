@@ -4,6 +4,9 @@ import com.banco.cuentas.application.dto.CuentaDTO;
 import com.banco.cuentas.domain.model.Cuenta;
 import org.springframework.stereotype.Component;
 
+/**
+ * Mapper para convertir entidades Cuenta a DTO y viceversa.
+ */
 @Component
 public class CuentaMapper {
     public CuentaDTO toDTO(Cuenta entity) {
