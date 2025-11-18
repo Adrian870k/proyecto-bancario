@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # 1. RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"   # Puerto servicios
+      - "15672:15672"  # Puerto interfaz admin
+    networks:
+      - banco-net
+
+  #Base de Datos
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword123
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - banco-net
+
+  #Microservicio de Clientes
+  servicio-clientes:
+    build:
+      context: .
+      dockerfile: ./servicio-clientes/Dockerfile
+    container_name: servicio-clientes
+    ports:
+      - "8081:8081"
+    restart: on-failure
+    environment:
+      # Sobrescribe los properties
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/db_clientes?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword123
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - mysql-db
+      - rabbitmq
+    networks:
+      - banco-net
+
+  #Microservicio de Cuentas
+  servicio-cuentas:
+    build:
+      context: .
+      dockerfile: ./servicio-cuentas/Dockerfile
+    container_name: servicio-cuentas
+    ports:
+      - "8082:8082"
+    restart: on-failure
+    environment:
+      #Sobrescribimos los properties
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/db_cuentas?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword123
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - mysql-db
+      - rabbitmq
+    networks:
+      - banco-net
+
+networks:
+  banco-net:
+    driver: bridge
+
+volumes:
+  mysql-data:

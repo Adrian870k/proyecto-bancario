@@ -1,0 +1,40 @@
+# ======================================================
+# Archivo .gitignore para proyectos Java
+# ======================================================
+
+# Archivos compilados de Java
+*.class
+
+# Archivos de Paquetes (JARs, WARs, etc.)
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# Directorios de Build de Maven
+target/
+pom.xml.bak
+
+# Logs
+*.log
+logs/
+.github/java-upgrade/*/logs/*.log
+
+# Archivos de IDE (IntelliJ IDEA)
+.idea/
+*.iml
+*.iws
+
+# Archivos de IDE (Visual Studio Code)
+.vscode/
+*.code-workspace
+
+# Archivos de IDE (Eclipse)
+.classpath
+.project
+.settings/
+
+# Archivos del Sistema Operativo
+.DS_Store
+Thumbs.db
